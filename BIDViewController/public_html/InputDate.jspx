@@ -12,7 +12,8 @@
           </f:facet>
           <f:facet name="center">
             <af:panelGroupLayout layout="scroll" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" id="pgl1">
-              <af:inputDate label="Date from Bean" id="id1" value="#{viewScope.InputDateBean.beanDate}" partialTriggers="cb4"/>
+              <af:inputDate label="Date from Bean" id="id1" value="#{viewScope.InputDateBean.beanDate}" partialTriggers="cb4">
+              </af:inputDate>
               <af:inputDate label="Date from pageDef" id="id2" value="#{bindings.pageDefDate1.inputValue}" partialTriggers="cb4"/>
               <af:separator id="s1"/>
               <af:panelFormLayout id="pfl1">

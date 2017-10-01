@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelStretchLayout topHeight="50px" id="psl1">
+          <f:facet name="top">
+            <af:outputText value="InputDate Test" id="ot1" inlineStyle="font-size:x-large;"/>
+          </f:facet>
+          <f:facet name="center">
+            <af:panelGroupLayout layout="scroll" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" id="pgl1">
+              <af:inputDate label="Date from Bean" id="id1" value="#{viewScope.InputDateBean.beanDate}" partialTriggers="cb4"/>
+              <af:inputDate label="Date from pageDef" id="id2" value="#{bindings.pageDefDate1.inputValue}" partialTriggers="cb4"/>
+              <af:separator id="s1"/>
+              <af:panelFormLayout id="pfl1">
+                <af:panelLabelAndMessage label="#{bindings.EmployeeId.hints.label}" id="plam1">
+                  <af:outputText value="#{bindings.EmployeeId.inputValue}" id="ot2">
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                              required="#{bindings.FirstName.hints.mandatory}" columns="#{bindings.FirstName.hints.displayWidth}"
+                              maximumLength="#{bindings.FirstName.hints.precision}" shortDesc="#{bindings.FirstName.hints.tooltip}" id="it1">
+                  <f:validator binding="#{bindings.FirstName.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}" required="#{bindings.LastName.hints.mandatory}"
+                              columns="#{bindings.LastName.hints.displayWidth}" maximumLength="#{bindings.LastName.hints.precision}"
+                              shortDesc="#{bindings.LastName.hints.tooltip}" id="it2">
+                  <f:validator binding="#{bindings.LastName.validator}"/>
+                </af:inputText>
+                <af:inputDate value="#{bindings.HireDate.inputValue}" label="#{bindings.HireDate.hints.label}" required="#{bindings.HireDate.hints.mandatory}"
+                              shortDesc="#{bindings.HireDate.hints.tooltip}" id="id4" partialTriggers="cb4">
+                  <f:validator binding="#{bindings.HireDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.HireDate.format}"/>
+                </af:inputDate>
+                <af:inputDate value="#{bindings.SrcDate.inputValue}" label="#{bindings.SrcDate.hints.label}" required="#{bindings.SrcDate.hints.mandatory}"
+                              shortDesc="#{bindings.SrcDate.hints.tooltip}" id="id3" partialTriggers="cb4">
+                  <f:validator binding="#{bindings.SrcDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.SrcDate.format}"/>
+                </af:inputDate>
+                <f:facet name="footer">
+                  <af:panelGroupLayout layout="vertical" id="pgl3">
+                    <af:panelGroupLayout layout="horizontal" id="pgl2">
+                      <af:commandButton actionListener="#{bindings.First.execute}" text="First" disabled="#{!bindings.First.enabled}" partialSubmit="true"
+                                        id="cb2"/>
+                      <af:commandButton actionListener="#{bindings.Previous.execute}" text="Previous" disabled="#{!bindings.Previous.enabled}"
+                                        partialSubmit="true" id="cb3"/>
+                      <af:commandButton actionListener="#{bindings.Next.execute}" text="Next" disabled="#{!bindings.Next.enabled}" partialSubmit="true"
+                                        id="cb5"/>
+                      <af:commandButton actionListener="#{bindings.Last.execute}" text="Last" disabled="#{!bindings.Last.enabled}" partialSubmit="true"
+                                        id="cb1"/>
+                    </af:panelGroupLayout>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:panelFormLayout>
+              <af:commandButton text="Submit" id="cb4" actionListener="#{viewScope.InputDateBean.onSubmit}"/>
+            </af:panelGroupLayout>
+            <!-- id="af_one_column_header_stretched"  -->
+          </f:facet>
+        </af:panelStretchLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>
